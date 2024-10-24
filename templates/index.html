@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <img src="{{ url_for('static', filename='logo-no-background.png') }}" alt="Logo" class="Logo">
+    </header>
+    <div class="login">
+      <h1>Diabetic Retinopathy Detector</h1>
+      <form action="{{ url_for('score')}}" enctype="multipart/form-data" method="post">
+        <input type="file" id="img" name="u" accept="image/*">
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Score
+        </button>
+      </form>
+      <br />
+      <br />
+      <div class="results">
+        <div class="predict">
+          <h3>Diabetic Retinopathy Stage:</h3>
+          <p>{{ prediction_text }}</p>
+        </div>
+        <div class="action">
+          <h3>Recommended Action:</h3>
+          <p>{{ action_text }}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
